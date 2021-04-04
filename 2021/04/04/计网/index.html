@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于为什么c++中创建节点要加*号而其他语言不要在 Java 中，只有当你使用 new 操作符时，才会真正在内存中申请一块空间，创建一个新对象，并将该对象绑定到你所定义的变量名上。其它情况下，要么是将已有对象绑定到某个变量名上，要么就是定义的变量名是个空引用，没有绑定任何对象。 也就是说，定义变量名只是创建了一个新的标识符，跟创建对象没有关系，创建对象必须通过 new 来完成，只有创建对象时才会申">
+  <meta name="description" content="因特网：世界范围的计算机网络。 **LAN：Local Area Network 局域网 **WAN: Wide Area Network 广域网 **MAN: Metropolitan AreaNetwork 城域网 *FM: Frequency Modulation频率调制 *AM: Amplitude Modulation振幅调制 *PM: Phase Modulation 相位调制 *FS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2021/01/20/%E6%9D%82%E9%A1%B9%E8%A6%81%E7%82%B9/index.html">
+<meta property="og:url" content="http://example.com/2021/04/04/%E8%AE%A1%E7%BD%91/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="关于为什么c++中创建节点要加*号而其他语言不要在 Java 中，只有当你使用 new 操作符时，才会真正在内存中申请一块空间，创建一个新对象，并将该对象绑定到你所定义的变量名上。其它情况下，要么是将已有对象绑定到某个变量名上，要么就是定义的变量名是个空引用，没有绑定任何对象。 也就是说，定义变量名只是创建了一个新的标识符，跟创建对象没有关系，创建对象必须通过 new 来完成，只有创建对象时才会申">
+<meta property="og:description" content="因特网：世界范围的计算机网络。 **LAN：Local Area Network 局域网 **WAN: Wide Area Network 广域网 **MAN: Metropolitan AreaNetwork 城域网 *FM: Frequency Modulation频率调制 *AM: Amplitude Modulation振幅调制 *PM: Phase Modulation 相位调制 *FS">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-01-20T11:46:15.057Z">
-<meta property="article:modified_time" content="2021-04-02T11:41:00.594Z">
+<meta property="article:published_time" content="2021-04-04T08:29:51.754Z">
+<meta property="article:modified_time" content="2021-03-10T09:22:55.010Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -154,158 +154,135 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-杂项要点" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-计网" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="关于为什么c-中创建节点要加-号而其他语言不要"><a href="#关于为什么c-中创建节点要加-号而其他语言不要" class="headerlink" title="关于为什么c++中创建节点要加*号而其他语言不要"></a>关于为什么c++中创建节点要加*号而其他语言不要</h3><p>在 Java 中，只有当你使用 new 操作符时，才会真正在内存中申请一块空间，创建一个新对象，并将该对象绑定到你所定义的变量名上。其它情况下，要么是将已有对象绑定到某个变量名上，要么就是定义的变量名是个空引用，没有绑定任何对象。</p>
-<p>也就是说，定义变量名只是创建了一个新的标识符，跟创建对象没有关系，创建对象必须通过 new 来完成，只有创建对象时才会申请内存空间。</p>
-<p><strong>但在 C++ 中，当你定义了一个变量 s 时，即使你没有给它赋值，也意味着你不但创建了一个新的标识符，同时还在栈中申请了对应的内存空间。</strong></p>
-<p>因此，C++ 中定义的变量名不仅仅是个标识符，还自动关联着栈中的一块内存空间。</p>
-<p>而 <strong>C++ 中的 new 操作符表示的是在堆中申请内存</strong>，因为栈中的内存在运行时期大小是固定且有限的，因此需要动态内存分配的时候就需要用 new 来实现。<strong>这类似于 C 里面的 malloc 函数</strong>，只不过 new 操作符还封装了其它的操作。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line">Student s; <span class="comment">//定义标识符s，没有实际空间</span></span><br><span class="line"></span><br><span class="line">Student s = <span class="keyword">new</span> Student(); <span class="comment">//定义s，并绑定到新创建的对象</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c++</span></span><br><span class="line">Student s; <span class="comment">//定义标识符s，并在栈中申请空间</span></span><br><span class="line"></span><br><span class="line">Student* s = <span class="keyword">new</span> Student(); <span class="comment">//定义s，并在堆中申请空间，过后需手动释放内存</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="c-中的string"><a href="#c-中的string" class="headerlink" title="c++中的string"></a>c++中的string</h3><p>c++中的string可以用”+=“自由地在字符串后添加新的字符</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;请输入数组长度：&quot;</span>;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ;i&lt;n;i++ )&#123;</span><br><span class="line">   	s+=<span class="string">&quot;#997&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;现在输出数组&quot;</span>;</span><br><span class="line"><span class="keyword">while</span>(s[i]!=<span class="string">&#x27;\0&#x27;</span>)&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;s[i];</span><br><span class="line">	i++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输入结果：3</span></span><br><span class="line"><span class="comment">//输出结果：#997#997#997</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="倒序输出链表中元素"><a href="#倒序输出链表中元素" class="headerlink" title="倒序输出链表中元素"></a>倒序输出链表中元素</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">recur</span><span class="params">(ListNode* head)</span> </span>&#123; <span class="comment">//利用递归操作反序遍历链表</span></span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">        recur(head-&gt;next);</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    	<span class="built_in">cout</span>&lt;&lt;head-&gt;val;  <span class="comment">//此语句可写做别的操作</span></span><br><span class="line">        <span class="comment">//    </span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="逆转链表的两种方法"><a href="#逆转链表的两种方法" class="headerlink" title="逆转链表的两种方法"></a>逆转链表的两种方法</h3><p>1.递归法</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> recur(head, <span class="literal">nullptr</span>);           <span class="comment">// 调用递归并返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ListNode* <span class="title">recur</span><span class="params">(ListNode* cur, ListNode* pre)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">nullptr</span>) <span class="keyword">return</span> pre;        <span class="comment">// 终止条件</span></span><br><span class="line">        ListNode* res = recur(cur-&gt;next, cur); <span class="comment">// 递归后继节点</span></span><br><span class="line">        cur-&gt;next = pre;                       <span class="comment">// 修改节点引用指向</span></span><br><span class="line">        <span class="keyword">return</span> res;                            <span class="comment">// 返回反转链表的头节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-<p>其中<strong>nullptr</strong>是c++中新的定义新指针的方式。因为c++中的NULL 是0 ，所以在使用函数重载时可能产生歧义，所以引入nullptr，与NULL区分开来，nullptr关键字用于标识空指针，是std::nullptr_t类型的（constexpr）变量。它可以转换成任何指针类型和bool布尔类型（主要是为了兼容普通指针可以作为条件判断语句的写法），但是不能被转换为整数。</p>
-<p>2.迭代法</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *p=head;</span><br><span class="line">        ListNode *l=<span class="literal">NULL</span>;</span><br><span class="line">        ListNode *temp=<span class="literal">NULL</span>;</span><br><span class="line">        ListNode *pre=<span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span>(p)&#123;</span><br><span class="line">            pre=p-&gt;next;</span><br><span class="line">            p-&gt;next=l;</span><br><span class="line">            l=p;</span><br><span class="line">            p=pre;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="malloc-free和new-delete的联系"><a href="#malloc-free和new-delete的联系" class="headerlink" title="malloc/free和new/delete的联系"></a>malloc/free和new/delete的联系</h3><p>​    存储方式相同，两者动态申请的内存都处于堆中，不会被操作系统自动收回，只有在关闭程序之后才会释放，所以一直运行程序并且不delete掉new出来的指针，会导致内存中有块空间被永远占用，而在指向此块空间的指针不存在时，这块内存也将不可到达，从而造成<strong>内存泄漏</strong></p>
-<p>ps：new和delete必须配套使用，虽然vscode并不报错</p>
-<h3 id="malloc-free和new-delete的区别"><a href="#malloc-free和new-delete的区别" class="headerlink" title="malloc/free和new/delete的区别"></a>malloc/free和new/delete的区别</h3><p>​    1.malloc和free返回void类型指针，new和delete直接带具体类型的指针。</p>
-<p>​    2.malloc和free属于C语言中的函数，需要库的支持，new/delete是C++中的运算符，运行效率更高。 </p>
-<p>​    3.用new动态申请类对象的内存空间时，类对象的构建要调用构造函数，相当于对内存空间进行了初始化。malloc动态申请的类对象的内存空间时，不会初始化，也就是说申请的内存空间无法使用，因为类的初始化是由构造函数完成的。</p>
-<h3 id="c-枚举的缺省值是0"><a href="#c-枚举的缺省值是0" class="headerlink" title="c++枚举的缺省值是0"></a>c++枚举的缺省值是0</h3><h2 id="unordered-map和map"><a href="#unordered-map和map" class="headerlink" title="unordered_map和map"></a>unordered_map和map</h2><table>
+        <p>因特网：世界范围的计算机网络。</p>
+<p>**LAN：Local Area Network 局域网</p>
+<p>**WAN: Wide Area Network 广域网</p>
+<p>**MAN: Metropolitan AreaNetwork 城域网</p>
+<p>*FM: Frequency Modulation频率调制</p>
+<p>*AM: Amplitude Modulation振幅调制</p>
+<p>*PM: Phase Modulation 相位调制</p>
+<p>*FSK: Frequency-shiftKeying 移频键控或频移键控</p>
+<p>*ASK: Amplitude- shiftKeying 幅移键控</p>
+<p>*PSK: Phase- shift Keying相移键控</p>
+<p>**PCM: Pulse CodeModulation 脉冲编码调制</p>
+<p>**FDM: Frequency DivisionMultiplexing 频分复用</p>
+<p>**TDM: Time DivisionMultiplexing 时分复用</p>
+<p>*WDM: WavelengthFrequency Division Multiplexing 波分复用</p>
+<p>FDMA:Frequency Division Multiple Access 频分多址接入</p>
+<p>TDMA: Time Division Multiple Access 时分多址接入</p>
+<p>CDMA: Code Division Multiple Access 码分多址接入</p>
+<p>**PDU: Protocol Data Unit 协议数据单元</p>
+<p>**SDU: Service Data Unit 服务数据单元</p>
+<p>**DTE: Data TerminalEquipment 数据终端设备</p>
+<p>**DCE: Data ComunicationEquipment</p>
+<p>或 DataCircuit-terminating Equipment 数据电路端接设备</p>
+<p>*Fiber-optic Cable:光纤电缆</p>
+<p>*Thick Ethernet: 粗缆</p>
+<p>*Thin Ethenet: 细缆</p>
+<p>*Coax:(Coaxial): 同轴电缆</p>
+<p>**UTP: UnshieldedTwisted-pair 无屏蔽双绞线</p>
+<p>**STP: ShieldedTwisted-pair 屏蔽双绞线</p>
+<p>**MAC: Medium AccessControl 媒体访问控制</p>
+<p>**LLC: Logical Link Control逻辑链路控制</p>
+<p>**CSMA/CD: Carrier SenseMultiple Access with Collision Detection</p>
+<p>**带冲突（碰撞）检测的载波监听多点访问法</p>
+<p>*Token Ring: 令牌环   Token Bus: 令牌总线</p>
+<p>**FTP: File TransferProtocol 文件传输协议</p>
+<p>**Repeater: 中继器</p>
+<p>**Bridge: 网桥     Router: 路由器</p>
+<p>**Gateway: 网关    Firewall: 防火墙</p>
+<p>IPX: Internet Packet Exchange</p>
+<p>SPX: Sequenced Packet Exchange</p>
+<p>**TCP: Transmission ControlProtocol 传输控制协议</p>
+<p>**IP: Internet Protocol 因特网协议</p>
+<p>ISA: Industry Standard Architecture</p>
+<p>PCI: Peripheral ComponentInterconnect</p>
+<p>SCSI: Small Computer SystemInterface</p>
+<p>USB: Universal Series Bus</p>
+<p>NAC: Network Adapter Card</p>
+<p>NIC: Network Interface Card</p>
+<p>**ISDN: Integrated ServicesDigital Network 综合服务数据网</p>
+<p>**Topology: 拓扑结构</p>
+<p>DMA: Direct Memory Access</p>
+<p>**Baseband: 基带      Broadband: 宽带</p>
+<p>**Bandwidth: 带宽      Backbone:主干</p>
+<p>*Baudrate: 波特率</p>
+<p>BNC: Bayonet Connector</p>
+<p>*ISO: InternationalStandard Organization 国际标准化组织</p>
+<p>*IEEE: Institute ofElectrical and Electronics Engineers电气与电子工程师学会</p>
+<p>CCITT:Consultative Committee, International Telegraph and Telephone</p>
+<p>国际电报电话咨询委员会</p>
+<p>*EIA: ElectronicIndustries Association （美国）电子工业协会</p>
+<p>*TIA: Telecom IndustriesAssociation （美国）电信工业协会</p>
+<p>ANSI: The American National Standards Institute美国国家标准研究学会</p>
+<p>NOS: Network Operating System 网络操作系统</p>
+<p>**OSI: Open SystemInterconnection 开放系统互连</p>
+<p>AUI: Attachment Unit Interface 连接单元接口</p>
+<p>MAU: Multistation Access Unit 多站访问部件</p>
+<p>MAU: Media Attachment Unit  介质连接单元</p>
+<p>**FDDI: Fiber DistributedData Interface：光纤分布式数据接口</p>
+<p>**ATM: AsynchronousTransfer Mode 异步传输模式</p>
+<p>BBS: Bulletin Board System</p>
+<p>**10 BASE T: 10 BasebandTwisted-pair</p>
+<p>FAT: File Alloation Table文件分配表</p>
+<p>NTFS: Windows NT File System</p>
+<p>*DHCP: Dynamic HostConfiguration Protocol动态主机配置协议</p>
+<p>**DNS：Domain Name Service</p>
+<p>*ARQ: Automatic RepeatreQuest自动重发请求</p>
+<p>*FEC: Forward ErrorCorrection前向纠错</p>
+<p>*NRZ: Non-Return to Zero不归零编码</p>
+<p>*Circuit Exchanging:电路交换</p>
+<p>*Message Exchanging: 报文交换</p>
+<p>*Packet Exchanging: 分组交换</p>
+<p>*Datagram: 数据报</p>
+<p>*Virtual Circuit: 虚电路</p>
+<p>ASCII: American Standard Code forInformation Interchange</p>
+<p>NII: National InformationInfrastructure国家信息基础设施</p>
+<p>**HTML: Hypertext MarkupLanguage超文本标识语言</p>
+<p>**HTTP: HyperText TransferProtocol超文本传输协议</p>
+<p>*URL: Uniform ResourceLocator统一资源定位器</p>
+<p>SAP: Service Access Point服务访问点</p>
+<p>FCC: Federal Communication Committee联邦通信委员会</p>
+<p>**Seven layers of OSI/RM:</p>
+<p>**Physical Layer：物理层</p>
+<p>**Data Link (Control) Layer：数据链路层</p>
+<p>**Network Layer：网络层</p>
+<p>**Transport Layer：传送层</p>
+<p>**Session Layer：会话层</p>
+<p>**Presentation Layer：表示层</p>
+<p>**Application Layer：应用层</p>
+<p>注：**部分要求熟记缩写词及其中英文全称</p>
+<p>​    *部分要求看懂缩写词及其中文名称</p>
+<p>​    无星号只要求一般了解</p>
+<p>2021.3.5</p>
+<p>时延：</p>
+<p>传播时延和传输时延的比较：</p>
+<table>
 <thead>
 <tr>
-<th><strong>成员方法</strong></th>
-<th><strong>功能</strong></th>
+<th>传输时延</th>
+<th>传播时延</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>begin()</strong></td>
-<td>返回指向容器中第一个键值对的正向迭代器。</td>
+<td>路由器推出分组所需要的的时间</td>
+<td>一个比特从一台路由到另一台路由所需时间</td>
 </tr>
 <tr>
-<td><strong>end()</strong></td>
-<td>返回指向容器中最后一个键值对之后位置的正向迭代器。</td>
-</tr>
-<tr>
-<td>cbegin()</td>
-<td>和 begin() 功能相同，只不过在其基础上增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
-</tr>
-<tr>
-<td>cend()</td>
-<td>和 end() 功能相同，只不过在其基础上，增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
-</tr>
-<tr>
-<td>empty()</td>
-<td>若容器为空，则返回 true；否则 false。</td>
-</tr>
-<tr>
-<td>size()</td>
-<td>返回当前容器中存有键值对的个数。</td>
-</tr>
-<tr>
-<td>max_size()</td>
-<td>返回容器所能容纳键值对的最大个数，不同的操作系统，其返回值亦不相同。</td>
-</tr>
-<tr>
-<td>operator[key]</td>
-<td>该模板类中重载了 [] 运算符，其功能是可以向访问数组中元素那样，只要给定某个键值对的键 key，就可以获取该键对应的值。注意，如果当前容器中没有以 key 为键的键值对，则其会使用该键向当前容器中插入一个新键值对。</td>
-</tr>
-<tr>
-<td>at(key)</td>
-<td>返回容器中存储的键 key 对应的值，如果 key 不存在，则会抛出 out_of_range 异常。</td>
-</tr>
-<tr>
-<td><strong>find(key)</strong></td>
-<td>查找以 key 为键的键值对，如果找到，则返回一个指向该键值对的正向迭代器；反之，则返回一个指向容器中最后一个键值对之后位置的迭代器（如果 end() 方法返回的迭代器）。</td>
-</tr>
-<tr>
-<td>count(key)</td>
-<td>在容器中查找以 key 键的键值对的个数。</td>
-</tr>
-<tr>
-<td>equal_range(key)</td>
-<td>返回一个 pair 对象，其包含 2 个迭代器，用于表明当前容器中键为 key 的键值对所在的范围。</td>
-</tr>
-<tr>
-<td>emplace()</td>
-<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
-</tr>
-<tr>
-<td>emplace_hint()</td>
-<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
-</tr>
-<tr>
-<td><strong>insert()</strong></td>
-<td>向容器中添加新键值对。</td>
-</tr>
-<tr>
-<td><strong>erase()</strong></td>
-<td>删除指定键值对。</td>
-</tr>
-<tr>
-<td>clear()</td>
-<td>清空容器，即删除容器中存储的所有键值对。</td>
-</tr>
-<tr>
-<td>swap()</td>
-<td>交换 2 个 unordered_map 容器存储的键值对，前提是必须保证这 2 个容器的类型完全相等。</td>
-</tr>
-<tr>
-<td>bucket_count()</td>
-<td>返回当前容器底层存储键值对时，使用桶（一个线性链表代表一个桶）的数量。</td>
-</tr>
-<tr>
-<td>max_bucket_count()</td>
-<td>返回当前系统中，unordered_map 容器底层最多可以使用多少桶。</td>
-</tr>
-<tr>
-<td>bucket_size(n)</td>
-<td>返回第 n 个桶中存储键值对的数量。</td>
-</tr>
-<tr>
-<td>bucket(key)</td>
-<td>返回以 key 为键的键值对所在桶的编号。</td>
-</tr>
-<tr>
-<td>load_factor()</td>
-<td>返回 unordered_map 容器中当前的负载因子。负载因子，指的是的当前容器中存储键值对的数量（size()）和使用桶数（bucket_count()）的比值，即 load_factor() = size() / bucket_count()。</td>
-</tr>
-<tr>
-<td>max_load_factor()</td>
-<td>返回或者设置当前 unordered_map 容器的负载因子。</td>
-</tr>
-<tr>
-<td>rehash(n)</td>
-<td>将当前容器底层使用桶的数量设置为 n。</td>
-</tr>
-<tr>
-<td>reserve()</td>
-<td>将存储桶的数量（也就是 bucket_count() 方法的返回值）设置为至少容纳count个元（不超过最大负载因子）所需的数量，并重新整理容器。</td>
-</tr>
-<tr>
-<td>hash_function()</td>
-<td>返回当前容器使用的哈希函数对象。</td>
+<td>分组长度和链路传输速度之比（毫秒到微秒级</td>
+<td>路由器间距离和传输速度之比（毫秒级</td>
 </tr>
 </tbody></table>
-<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><h5 id="map"><a href="#map" class="headerlink" title="map"></a>map</h5><p>优点：<br>有序性，这是map结构最大的优点，其元素的有序性在很多应用中都会简化很多的操作<br>红黑树，内部实现一个红黑书使得map的很多操作在的时间复杂度下就可以实现，因此效率非常的高<br>缺点：<br>空间占用率高，因为map内部实现了红黑树，虽然提高了运行效率，但是因为每一个节点都需要额外保存父节点，孩子节点以及红/黑性质，使得每一个节点都占用大量的空间<br>适用处，对于那些有顺序要求的问题，用map会更高效一些</p>
-<h5 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h5><p>优点：<br>因为内部实现了哈希表，因此其查找速度非常的快<br>缺点：<br>哈希表的建立比较耗费时间<br>适用处，对于查找问题，unordered_map会更加高效一些，因此遇到查找问题，常会考虑一下用unordered_map</p>
-<h4 id="迭代器使用方法"><a href="#迭代器使用方法" class="headerlink" title="迭代器使用方法"></a>迭代器使用方法</h4><p>for (auto iter = umap.begin(); iter != umap.end(); ++iter)</p>
+<p>对应用程序服务要求的分类：可靠数据传输、吞吐量、定时和安全性。</p>
+<p>TCP面向连接的服务</p>
+<p>第一次握手：在应用层数据报文流动之前，TCP让客户和服务器先交换运输层控制信息。<strong>在这次握手之后</strong>，一个TCP连接就在两个进程的套接字之间建立了，这是条全双工连接，应用程序结束报文发送时，必须拆除该连接。</p>
+<p>UDP就是因为太简单（不提供不必要的服务、轻量级）所以使用起来太复杂。HTTP基于UDP，UDP可靠性不强容易丢包，但延迟低（所以有的发行者将网络电话应用运行在UDP上<br>TCP就是为了使用简单，才导致他那么复杂。TCP可以在应用层家SSL-安全套接字层，可以提供可靠数据传输</p>
+<p>HTTP是一个无状态协议，因为HTTP服务器不保存关于客户的任何信息。</p>
 
       
 
@@ -385,7 +362,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/01/20/%E6%9D%82%E9%A1%B9%E8%A6%81%E7%82%B9/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/04/04/%E8%AE%A1%E7%BD%91/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -399,7 +376,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/04/04/c++/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/04/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -409,7 +386,7 @@
     </a>
   
   
-    <a href="/2021/01/20/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/04/04/c++/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>

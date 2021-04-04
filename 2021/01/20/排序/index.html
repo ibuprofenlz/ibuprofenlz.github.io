@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="排序堆排序概念：大顶堆：每个节点的值都大于其子节点的值 小顶堆：每个节点的值都小于其节点的值 时间复杂度：nlogn 步骤：1.先把数据构造成一个大顶堆，取出堆顶元素 ​            2.将剩下的元素继续构成一个大顶堆，并取出堆顶元素 ​            3.重复以上操作，知道取完所有数据">
+  <meta name="description" content="排序稳定性：稳定：如果a原本在b前面，而a&#x3D;b，排序之后a仍然在b的前面。 不稳定：如果a原本在b的前面，而a&#x3D;b，排序之后 a 可能会出现在 b 的后面。 选择排序首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。 再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。 重复第二步，直到所有元素均排序完毕。 堆排序概念：大顶堆：每个节点的值都大于其子节点的值 小顶堆">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/2021/01/20/%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="排序堆排序概念：大顶堆：每个节点的值都大于其子节点的值 小顶堆：每个节点的值都小于其节点的值 时间复杂度：nlogn 步骤：1.先把数据构造成一个大顶堆，取出堆顶元素 ​            2.将剩下的元素继续构成一个大顶堆，并取出堆顶元素 ​            3.重复以上操作，知道取完所有数据">
+<meta property="og:description" content="排序稳定性：稳定：如果a原本在b前面，而a&#x3D;b，排序之后a仍然在b的前面。 不稳定：如果a原本在b的前面，而a&#x3D;b，排序之后 a 可能会出现在 b 的后面。 选择排序首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。 再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。 重复第二步，直到所有元素均排序完毕。 堆排序概念：大顶堆：每个节点的值都大于其子节点的值 小顶堆">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-20T11:44:15.414Z">
-<meta property="article:modified_time" content="2021-01-19T09:50:38.370Z">
+<meta property="article:modified_time" content="2021-04-04T08:14:55.719Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -159,12 +159,93 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><p><strong>大顶堆</strong>：每个节点的值都大于其子节点的值</p>
+        <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h3 id="稳定性："><a href="#稳定性：" class="headerlink" title="稳定性："></a>稳定性：</h3><p><strong>稳定</strong>：如果a原本在b前面，而a=b，排序之后a仍然在b的前面。</p>
+<p><strong>不稳定</strong>：如果a原本在b的前面，而a=b，排序之后 a 可能会出现在 b 的后面。</p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。</p>
+<p>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。</p>
+<p>重复第二步，直到所有元素均排序完毕。</p>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><p><strong>大顶堆</strong>：每个节点的值都大于其子节点的值</p>
 <p><strong>小顶堆</strong>：每个节点的值都小于其节点的值</p>
 <p><strong>时间复杂度：nlogn</strong></p>
 <p><strong>步骤：</strong>1.先把数据构造成一个大顶堆，取出堆顶元素</p>
 <p>​            2.将剩下的元素继续构成一个大顶堆，并取出堆顶元素</p>
 <p>​            3.重复以上操作，知道取完所有数据</p>
+<table>
+<thead>
+<tr>
+<th>比较类排序</th>
+<th>稳定性</th>
+<th>时间复杂</th>
+<th>空间复杂</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>冒泡排序</td>
+<td>稳定</td>
+<td>n^2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>选择排序</td>
+<td>不稳定</td>
+<td>n^2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>插入排序</td>
+<td>稳定</td>
+<td>n^2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>不稳定</td>
+<td>n<del>nlogn</del>n^2</td>
+<td>nlogn</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>稳定</td>
+<td>nlogn</td>
+<td>n</td>
+</tr>
+<tr>
+<td>希尔排序</td>
+<td>不稳定</td>
+<td>n^1.3~n^2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td>稳定</td>
+<td>nlogn</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>非比较类排序</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>基数排序</td>
+<td>稳定</td>
+<td>n*k</td>
+<td>n+k</td>
+</tr>
+<tr>
+<td>桶排序</td>
+<td>稳定</td>
+<td>n+k<del>n</del>n^2</td>
+<td>n+k</td>
+</tr>
+<tr>
+<td>计数排序</td>
+<td>稳定</td>
+<td>n+k</td>
+<td>n+k</td>
+</tr>
+</tbody></table>
 
       
 
@@ -267,11 +348,6 @@
       </div>
     </a>
   
-  
-    <a href="/2021/01/20/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 

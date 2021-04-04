@@ -152,6 +152,652 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-c++STL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="c-STL-Standard-Template-Library"><a href="#c-STL-Standard-Template-Library" class="headerlink" title="c++STL(Standard Template Library)"></a>c++STL(Standard Template Library)</h1><p>STL主要由以下部分组成：</p>
+<p>容器迭代器仿函数算法分配器配接器</p>
+<h2 id="Iterator迭代器"><a href="#Iterator迭代器" class="headerlink" title="Iterator迭代器"></a>Iterator迭代器</h2><p>运用于聚合对象的一种模式，可以使我们在不知道对象内部表示的情况下，按照一定顺序（由iterator提供的方法）访问聚合对象中的各个元素。</p>
+<p>迭代器和指针的区别：</p>
+<p>迭代器说到底是类末班，表现像指针</p>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>在<strong>set中每个元素的值都唯一</strong>，而且系统能根据元素的值自动进行排序。<strong>set中元素的值不能直接被改变</strong>。set<strong>内部采用的是一种非常高效的平衡检索二叉树：红黑树</strong>，也称为RB树(Red-Black Tree)。RB树的统计性能要好于一般平衡二叉树。</p>
+<p>set具备的两个特点：</p>
+<p>set中的元素都是排序好的<br>set中的元素都是唯一的，没有重复的</p>
+<p>操作：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">begin();            <span class="comment">// 返回指向第一个元素的迭代器</span></span><br><span class="line">end();              <span class="comment">// 返回指向迭代器的最末尾处（即最后一个元素的下一个位置）</span></span><br><span class="line">clear();    <span class="comment">// 清除所有元素</span></span><br><span class="line"></span><br><span class="line">count();            <span class="comment">// 返回某个值元素的个数</span></span><br><span class="line"></span><br><span class="line">empty();            <span class="comment">// 如果集合为空，返回true</span></span><br><span class="line"> </span><br><span class="line">equal_range();      <span class="comment">//返回集合中与给定值相等的上下限的两个迭代器</span></span><br><span class="line"> </span><br><span class="line">erase() <span class="comment">//删除集合中的元素</span></span><br><span class="line"> </span><br><span class="line">find()<span class="comment">//返回一个指向被查找到元素的迭代器</span></span><br><span class="line"> </span><br><span class="line">get_allocator()<span class="comment">//返回集合的分配器</span></span><br><span class="line"> </span><br><span class="line">insert()<span class="comment">//在集合中插入元素</span></span><br><span class="line"> </span><br><span class="line">lower_bound()<span class="comment">//返回指向大于（或等于）某值的第一个元素的迭代器</span></span><br><span class="line"> </span><br><span class="line">key_comp()<span class="comment">//返回一个用于元素间值比较的函数</span></span><br><span class="line"> </span><br><span class="line">max_size()<span class="comment">//返回集合能容纳的元素的最大限值</span></span><br><span class="line"> </span><br><span class="line">rbegin()<span class="comment">//返回指向集合中最后一个元素的反向迭代器</span></span><br><span class="line"> </span><br><span class="line">rend()<span class="comment">//返回指向集合中第一个元素的反向迭代器</span></span><br><span class="line"> </span><br><span class="line">size()<span class="comment">//集合中元素的数目</span></span><br><span class="line"> </span><br><span class="line">swap()<span class="comment">//交换两个集合变量</span></span><br><span class="line"> </span><br><span class="line">upper_bound()<span class="comment">//返回大于某个值元素的迭代器</span></span><br><span class="line"> </span><br><span class="line">value_comp()<span class="comment">//返回一个用于比较元素间的值的函数</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>底层为<strong>红黑树</strong>，<strong>有序</strong>，<strong>空间占用率高</strong>，因为map内部实现了红黑树，虽然提高了运行效率，但是因为每一个节点都需要额外保存父节点、孩子节点和红/黑性质，使得每一个节点都占用大量的空间</p>
+<h2 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h2><p>底层为哈希表，建表花费时间长，但查找速度快</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/04/c++STL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-操作系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个进程：一个正在执行程序的实例，包括程序计数器、寄存器和变量当前的值。</p>
+<p>由于cpu在各个进程间来回快速切换，所以每个进程执行其运算的速度是不确定的。</p>
+<p>进程的三种状态：1.运行（占用cpu的时刻</p>
+<p>​                               2.就绪（可以运行，因为其他进程在运行而停止</p>
+<p>​                                3.阻塞（除非某种外部事件发生，否则进程不能运行                        </p>
+<p>以下为<strong>进程状态图</strong>，其中数字序号分别表示：</p>
+<p>1.进程为等待输入而阻塞     2.调度程序选择另一个进程</p>
+<p>3.调度程序选择这个进程     4.出现有效输入</p>
+<p><img src="C:\Users\LZ\AppData\Roaming\Typora\typora-user-images\image-20210303180136716.png" alt="image-20210303180136716"></p>
+<p>线程：通俗的说就是分离的进程</p>
+<p>进程和线程的关系：</p>
+<p><img src="C:\Users\LZ\AppData\Roaming\Typora\typora-user-images\image-20210303181332074.png" alt="image-20210303181332074"></p>
+<p>线程的作用：应用程序中同事发生多种活动，某些活动随着时间推移会被阻塞。通过讲这些应用程序分解成可以准并行的多个顺序线程，程序设计模型会变得简单。同时线程的创建和撤销比进程快（10~100倍）。</p>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h4 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h4><p>一组进程中的每一个进程都在等待仅由该组进程中的其他进程才能引发的事件，那么该组进程是死锁的。</p>
+<h4 id="解决死锁的方法："><a href="#解决死锁的方法：" class="headerlink" title="解决死锁的方法："></a>解决死锁的方法：</h4><ol>
+<li><h5 id="预防死锁："><a href="#预防死锁：" class="headerlink" title="预防死锁："></a>预防死锁：</h5><ol>
+<li>第一种协议：每个进程一次性申请好所需要的所有资源</li>
+</ol>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-计网" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>因特网：世界范围的计算机网络。</p>
+<p>**LAN：Local Area Network 局域网</p>
+<p>**WAN: Wide Area Network 广域网</p>
+<p>**MAN: Metropolitan AreaNetwork 城域网</p>
+<p>*FM: Frequency Modulation频率调制</p>
+<p>*AM: Amplitude Modulation振幅调制</p>
+<p>*PM: Phase Modulation 相位调制</p>
+<p>*FSK: Frequency-shiftKeying 移频键控或频移键控</p>
+<p>*ASK: Amplitude- shiftKeying 幅移键控</p>
+<p>*PSK: Phase- shift Keying相移键控</p>
+<p>**PCM: Pulse CodeModulation 脉冲编码调制</p>
+<p>**FDM: Frequency DivisionMultiplexing 频分复用</p>
+<p>**TDM: Time DivisionMultiplexing 时分复用</p>
+<p>*WDM: WavelengthFrequency Division Multiplexing 波分复用</p>
+<p>FDMA:Frequency Division Multiple Access 频分多址接入</p>
+<p>TDMA: Time Division Multiple Access 时分多址接入</p>
+<p>CDMA: Code Division Multiple Access 码分多址接入</p>
+<p>**PDU: Protocol Data Unit 协议数据单元</p>
+<p>**SDU: Service Data Unit 服务数据单元</p>
+<p>**DTE: Data TerminalEquipment 数据终端设备</p>
+<p>**DCE: Data ComunicationEquipment</p>
+<p>或 DataCircuit-terminating Equipment 数据电路端接设备</p>
+<p>*Fiber-optic Cable:光纤电缆</p>
+<p>*Thick Ethernet: 粗缆</p>
+<p>*Thin Ethenet: 细缆</p>
+<p>*Coax:(Coaxial): 同轴电缆</p>
+<p>**UTP: UnshieldedTwisted-pair 无屏蔽双绞线</p>
+<p>**STP: ShieldedTwisted-pair 屏蔽双绞线</p>
+<p>**MAC: Medium AccessControl 媒体访问控制</p>
+<p>**LLC: Logical Link Control逻辑链路控制</p>
+<p>**CSMA/CD: Carrier SenseMultiple Access with Collision Detection</p>
+<p>**带冲突（碰撞）检测的载波监听多点访问法</p>
+<p>*Token Ring: 令牌环   Token Bus: 令牌总线</p>
+<p>**FTP: File TransferProtocol 文件传输协议</p>
+<p>**Repeater: 中继器</p>
+<p>**Bridge: 网桥     Router: 路由器</p>
+<p>**Gateway: 网关    Firewall: 防火墙</p>
+<p>IPX: Internet Packet Exchange</p>
+<p>SPX: Sequenced Packet Exchange</p>
+<p>**TCP: Transmission ControlProtocol 传输控制协议</p>
+<p>**IP: Internet Protocol 因特网协议</p>
+<p>ISA: Industry Standard Architecture</p>
+<p>PCI: Peripheral ComponentInterconnect</p>
+<p>SCSI: Small Computer SystemInterface</p>
+<p>USB: Universal Series Bus</p>
+<p>NAC: Network Adapter Card</p>
+<p>NIC: Network Interface Card</p>
+<p>**ISDN: Integrated ServicesDigital Network 综合服务数据网</p>
+<p>**Topology: 拓扑结构</p>
+<p>DMA: Direct Memory Access</p>
+<p>**Baseband: 基带      Broadband: 宽带</p>
+<p>**Bandwidth: 带宽      Backbone:主干</p>
+<p>*Baudrate: 波特率</p>
+<p>BNC: Bayonet Connector</p>
+<p>*ISO: InternationalStandard Organization 国际标准化组织</p>
+<p>*IEEE: Institute ofElectrical and Electronics Engineers电气与电子工程师学会</p>
+<p>CCITT:Consultative Committee, International Telegraph and Telephone</p>
+<p>国际电报电话咨询委员会</p>
+<p>*EIA: ElectronicIndustries Association （美国）电子工业协会</p>
+<p>*TIA: Telecom IndustriesAssociation （美国）电信工业协会</p>
+<p>ANSI: The American National Standards Institute美国国家标准研究学会</p>
+<p>NOS: Network Operating System 网络操作系统</p>
+<p>**OSI: Open SystemInterconnection 开放系统互连</p>
+<p>AUI: Attachment Unit Interface 连接单元接口</p>
+<p>MAU: Multistation Access Unit 多站访问部件</p>
+<p>MAU: Media Attachment Unit  介质连接单元</p>
+<p>**FDDI: Fiber DistributedData Interface：光纤分布式数据接口</p>
+<p>**ATM: AsynchronousTransfer Mode 异步传输模式</p>
+<p>BBS: Bulletin Board System</p>
+<p>**10 BASE T: 10 BasebandTwisted-pair</p>
+<p>FAT: File Alloation Table文件分配表</p>
+<p>NTFS: Windows NT File System</p>
+<p>*DHCP: Dynamic HostConfiguration Protocol动态主机配置协议</p>
+<p>**DNS：Domain Name Service</p>
+<p>*ARQ: Automatic RepeatreQuest自动重发请求</p>
+<p>*FEC: Forward ErrorCorrection前向纠错</p>
+<p>*NRZ: Non-Return to Zero不归零编码</p>
+<p>*Circuit Exchanging:电路交换</p>
+<p>*Message Exchanging: 报文交换</p>
+<p>*Packet Exchanging: 分组交换</p>
+<p>*Datagram: 数据报</p>
+<p>*Virtual Circuit: 虚电路</p>
+<p>ASCII: American Standard Code forInformation Interchange</p>
+<p>NII: National InformationInfrastructure国家信息基础设施</p>
+<p>**HTML: Hypertext MarkupLanguage超文本标识语言</p>
+<p>**HTTP: HyperText TransferProtocol超文本传输协议</p>
+<p>*URL: Uniform ResourceLocator统一资源定位器</p>
+<p>SAP: Service Access Point服务访问点</p>
+<p>FCC: Federal Communication Committee联邦通信委员会</p>
+<p>**Seven layers of OSI/RM:</p>
+<p>**Physical Layer：物理层</p>
+<p>**Data Link (Control) Layer：数据链路层</p>
+<p>**Network Layer：网络层</p>
+<p>**Transport Layer：传送层</p>
+<p>**Session Layer：会话层</p>
+<p>**Presentation Layer：表示层</p>
+<p>**Application Layer：应用层</p>
+<p>注：**部分要求熟记缩写词及其中英文全称</p>
+<p>​    *部分要求看懂缩写词及其中文名称</p>
+<p>​    无星号只要求一般了解</p>
+<p>2021.3.5</p>
+<p>时延：</p>
+<p>传播时延和传输时延的比较：</p>
+<table>
+<thead>
+<tr>
+<th>传输时延</th>
+<th>传播时延</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>路由器推出分组所需要的的时间</td>
+<td>一个比特从一台路由到另一台路由所需时间</td>
+</tr>
+<tr>
+<td>分组长度和链路传输速度之比（毫秒到微秒级</td>
+<td>路由器间距离和传输速度之比（毫秒级</td>
+</tr>
+</tbody></table>
+<p>对应用程序服务要求的分类：可靠数据传输、吞吐量、定时和安全性。</p>
+<p>TCP面向连接的服务</p>
+<p>第一次握手：在应用层数据报文流动之前，TCP让客户和服务器先交换运输层控制信息。<strong>在这次握手之后</strong>，一个TCP连接就在两个进程的套接字之间建立了，这是条全双工连接，应用程序结束报文发送时，必须拆除该连接。</p>
+<p>UDP就是因为太简单（不提供不必要的服务、轻量级）所以使用起来太复杂。HTTP基于UDP，UDP可靠性不强容易丢包，但延迟低（所以有的发行者将网络电话应用运行在UDP上<br>TCP就是为了使用简单，才导致他那么复杂。TCP可以在应用层家SSL-安全套接字层，可以提供可靠数据传输</p>
+<p>HTTP是一个无状态协议，因为HTTP服务器不保存关于客户的任何信息。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/04/%E8%AE%A1%E7%BD%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-c++" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="程序题："><a href="#程序题：" class="headerlink" title="程序题："></a>程序题：</h2><p><strong>1.质数、水仙花数、递归</strong></p>
+<p><strong>2.三大排序</strong></p>
+<p><strong>3.链表</strong></p>
+<p>c++特性：<strong>封装、继承</strong>和<strong>多态</strong>、<strong>抽象</strong></p>
+<p><strong>继承</strong>：类的默认继承方式是私有继承</p>
+<p> <strong>在生成派生类对象时</strong>，如果派生类中含有对象成员，则先执行基类的构造函数，然后执行对象成员的构造函数，最后执行派生类的构造函数。析构函数的调用顺序与构造函数的顺序则相反。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>public</th>
+<th>protect</th>
+<th>private</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>公有继承</td>
+<td>public</td>
+<td>protected</td>
+<td>不可见</td>
+</tr>
+<tr>
+<td>私有继承</td>
+<td>private</td>
+<td>private</td>
+<td>不可见</td>
+</tr>
+<tr>
+<td>保护继承</td>
+<td>protected</td>
+<td>protected</td>
+<td>不可见</td>
+</tr>
+</tbody></table>
+<p>构造函数没有返回值和返回类型</p>
+<p><strong>标识符</strong>：用于给变量、常量、函数、语句块等命名，以建立起名称与使用之间的关系</p>
+<p><strong>自动变量</strong>：指的是局部作用域变量，具体来说即是在控制流进入变量作用域时系统自动为其分配存储空间，并在离开作用域时释放空间的一类变量，即平时用的最多的普通变量。</p>
+<p><strong>static 静态局部变量</strong><br>    1.函数调用结束不释放空间<br>    2.保留上一次函数调用结束的值</p>
+<p>1.用int指针指向数组，则指针可当作数组使用</p>
+<p>实例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x[] = &#123; <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span> &#125;;</span><br><span class="line">	<span class="keyword">int</span> *p = x;</span><br><span class="line">	<span class="keyword">int</span> k = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; p[k] &lt;&lt; <span class="built_in">endl</span>&lt;&lt;&amp;x[<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输出：</span><br><span class="line">2</span><br><span class="line">00F5F7C0</span><br></pre></td></tr></table></figure>
+
+
+<p>2.在长的||表达式中可能右边部分可能不执行，如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a,b,c,d;</span><br><span class="line">a=b=c=<span class="number">1</span>;</span><br><span class="line">d=++a||++b&amp;&amp;++c;</span><br></pre></td></tr></table></figure>
+<p>此时因为++a的值为true 故不需要执行||右边，同样的对于&amp;&amp;表达式，若左边为false则不执行右边。</p>
+<p>3.<strong>缺省</strong>就是<strong>默认</strong>的意思，函数默认值的参数必须在形参表列中的最右端</p>
+<p>4.<strong>纯虚函数</strong>是一个在基类中声明的虚函数，在该基类中没有定义，需要在派生类中根据各自需要的功能自行定义，例如一个计算面积的公式，需要根据派生类的图形样式定义具体的公式实现，有纯虚函数的类就是<strong>虚基类</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> 函数类型 函数名 (参数表) =<span class="number">0</span>; <span class="comment">//=0 表示没有函数体，只能做基类，不能实例化</span></span><br></pre></td></tr></table></figure>
+
+
+<p><code>5</code>.C++的<strong>多态性</strong>用一句话概括就是：在基类的函数前加上<strong>virtual</strong>关键字，在派生类中<strong>重写</strong>该函数，运行时将会根据对象的实际类型来调用相应的函数。如果对象类型是派生类，就调用派生类的函数；如果对象类型是基类，就调用基类的函数</p>
+<p>多态性也称后约束或动态约束，它常用虚函数来实现。</p>
+<p>6.typedef定义的<strong>不算新的数据类型</strong></p>
+<p>7.sizeof运算符还可以求某个表达式类型在内存中所占的字节数</p>
+<p>8.**作用域运算符(::)**的作用：<br>    1.存在具有相同名称的局部变量时，访问全局变量。<br>    2.在类之外定义类相关函数。<br>    3.访问类的静态变量。<br>    4.在多重继承的情况下，如果两个基类中存在相同的变量名，可以使用作用域运算符来进行区分。<br>    5.限定成员函数所属的类。</p>
+<p>9.<strong>函数类型</strong>决定函数的返回值类型，若返回值表达式类型不符，则自动对其转换</p>
+<p>10.在派生类中基类的<strong>保护或者基类公有</strong>都可以<strong>直接访问</strong>，基类的私有成员只能是基类的成员函数来访问，即使是私有继承过来的，私有继承即把基类的保护和公有变成自己的私有。</p>
+<ol start="11">
+<li><p>new创建的对象数组不能指定初始值。new:用作动态内存分配，建立一个堆对象，对应的删除是delete，new运算返回一个指向新分配内存首地址的类型指针。如果建立的对象是一个基本类型变量，初始化过程是赋值，例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *point;</span><br><span class="line">point = <span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">20</span>);</span><br><span class="line"><span class="comment">//不设置初值</span></span><br><span class="line"><span class="keyword">int</span> *point = <span class="keyword">new</span> <span class="keyword">int</span>();</span><br></pre></td></tr></table></figure>
+<p>用new分配的内存必须用delete释放，否则动态分配的内存无法回收，造成<strong>内存泄露</strong></p>
+</li>
+<li><p>构造函数不能被继承，构造函数不能定义虚函数</p>
+</li>
+<li><p>静态成员函数不能被继承，静态数据成员的初始化与它的访问控制权限无关，<strong>普通成员函数可以调用静态函数</strong>，相反<strong>静态函数不能调用普通成员函数</strong>，这与普通函数与常成员函数相同，<strong>静态数据成员被 类 的所有对象所共享，包括该类派生类的对象</strong>。</p>
+</li>
+<li><p>虚函数在基类和派生类，具有相同的返回类型、形参类型和形参个数，而函数体可以根据不同的派生类或基类实现不同的操作。<strong>这也就是c++如何实现动态多态</strong>，即运行时的多态</p>
+</li>
+<li><p>友元关系<strong>不能被继承</strong>，是<strong>单向</strong>的，<strong>不具有交换性</strong></p>
+</li>
+<li><p><strong>删除对象</strong>或<strong>结束程序</strong>时，自动调用析构函数</p>
+</li>
+<li><p>除了类属关系运算符”.”、成员指针运算符”.*”、作用域运算符”::”、sizeof运算</p>
+<p>符和三目运算符”?:”以外，C++中的所有运算符都可以重载</p>
+<p><strong>C++语言中用成员函数重载时，重载一目运算符没有参数，重载二目运算符要有一个参数。</strong></p>
+<p><strong>重载的目的是减少命名空间冲突的问题</strong></p>
+<p>​    <u><strong>重载</strong></u>指的是在同一个作用域内，两函数的函数名可以相同，但是参数不能完全相同，可以是参数类型不同或者是参数个数不同，至于返回值，不影响重载。</p>
+<p>运算符重载的方法有<strong>友元或者成员函数</strong>两种途径，但是赋值运算符只能使用成员函数的</p>
+<p>方法来实现</p>
+<p>以下四种只能通过成员函数进行重载；</p>
+<p>​     **=**：赋值运算符；</p>
+<p>​     ( )：函数调用运算符；</p>
+<p>​     []：下表运算符</p>
+<p>​     _&gt;:通过指针方位类成员的运算符。</p>
+<p>​    <u><strong>重写</strong></u>也叫<strong>覆盖</strong>指的在继承关系中，子类中定义了一个与父类极其相似的虚函数。<br>具体怎么相似：函数名必须相同，参数列表必须相同，返回值可以不相同，但是必须是父子关系的指针或引用，是指在派生类中重新对基类中的虚函数（注意是虚函数）重新实现。即函数名和参数都一样，只是函数的实现体不一样。</p>
+<p>​    <strong>重写是虚函数，重定义是类的普通函数！</strong></p>
+<p>​    <strong>重定义</strong>也叫隐藏，指的是在继承关系中，子类实现了一个和父类名字一样的函数，（只关注函数名，和参数与返回值无关）这样的话子类的函数就把父类的同名函数隐藏了。</p>
+</li>
+<li><p>运行时的多态、即动态多态通过虚函数实现</p>
+</li>
+<li><p>oct表示八进制，hex表示十六进制，但它们<strong>只能输出整型</strong>的数据</p>
+</li>
+<li><p><strong>公有派生类的对象可以作为基类的对象处理</strong>，例如：基类：动物，派生类：猫<br>我们使用对象时，可以说：动物需要呼吸，当然也可以更具体一些说：猫需要呼吸。</p>
+</li>
+<li><p>形参同数据成员同名，在成员变量名前加this来访问成员变量，</p>
+</li>
+<li><p>静态联编说的是在编译时就已经确定好了调用和被调用两者的关系。</p>
+<p><strong>动态联编</strong>说的是程序在运行时才确定调用和被调用者的关系。</p>
+<p>这个主要是虚函数实现的多态性.</p>
+</li>
+<li><p>采用向量初始化另一个向量的形式：vector <type> name1(name);</p>
+</li>
+<li><p>vector不是一个类，而是一个类模板，vector定义的数组对象的e所有元素都会被初始化，取决于vector数组的元素类型</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x=<span class="number">10</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;arr(x); <span class="comment">//这样arr的所有元素都会被置为0值</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;A&gt;arrA(x);<span class="comment">//A为一个类 ， 这样arrA的所有元素都会调用其默认构造函数初始化，因此也必须有默认构造函数e</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="25">
+<li><p>定义类时的成员默认为私有，而结构体则是公有</p>
+</li>
+<li><p>模板特点是不同的数据具有相同的处理方法的抽象</p>
+</li>
+<li><p>二：*<em>const int * a*</em>；</p>
+</li>
+<li><p>const修饰的是整型数 int，而不是指针，即a是一个指向常整型数的指针。近一步的理解为：整型数 *a是不可以被重新赋值的，而指针却是可以修改的，可以重新指向另外一个内存地址；eg：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a1=<span class="number">30</span>; <span class="keyword">int</span> a2=<span class="number">40</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> *p=&amp;a1;    <span class="comment">//此时输出*p，结果为30</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p=&amp;a2;               <span class="comment">//此时输出*p，结果为40</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a2=<span class="number">80</span>;               <span class="comment">// 不能用*p=80来直接赋值，因为*p被const修饰，不能重新赋值</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,*p);   <span class="comment">//此时输出*p，结果为80</span></span><br></pre></td></tr></table></figure>
+<p>三：*<em>int * const a*</em>；</p>
+<p>const修饰的是指针a，而不是整型数<em>a，</em>a为变量而不是一个常量。即a是指向一个可以修改的整型数的常指针。进一步的理解为：指针指向的整型数是可以被修改的，但是指针不可以被修改。</p>
+<p>eg：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a1=<span class="number">30</span>,<span class="keyword">int</span> a2=<span class="number">40</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> p=&amp;a1;     <span class="comment">//此时输出*p的结果是 30</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a1=<span class="number">80</span>;                 <span class="comment">// 可以用*p=80来代替，即可以用*pl来修改a1的值</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<p>28.私有成员可以通过对象调用公有函数来调用</p>
+<p>29.<strong>在类的内部不能对数据成员直接赋值</strong></p>
+<p>30.同一个函数调用对象的实参类型不同，则函数形参应该是模板T类型，例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream.h&gt;</span></span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span> <span class="params">(__________)</span></span></span><br><span class="line"><span class="function"></span>&#123;__________;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n/<span class="number">2</span>;i++)</span><br><span class="line">t=a［i］, a［i］=a［n<span class="number">-1</span>-i］, a［n<span class="number">-1</span>-i］=t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;<span class="keyword">int</span> a［<span class="number">5</span>］=&#123;<span class="number">10</span>,<span class="number">21</span>,<span class="number">34</span>,<span class="number">4</span>,<span class="number">50</span>&#125;;</span><br><span class="line"><span class="keyword">double</span> d［<span class="number">6</span>］=&#123;<span class="number">11.1</span>,<span class="number">10.1</span>,<span class="number">9.1</span>,<span class="number">8.1</span>,<span class="number">7.1</span>&#125;;</span><br><span class="line">f(a,<span class="number">5</span>);f(d,<span class="number">6</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//横线处应该填1： T a[],int n</span></span><br><span class="line"><span class="comment">//          2： T t=0；</span></span><br></pre></td></tr></table></figure>
+<p>31.使用构造函数对类中私有成员赋值的方法还有</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span>:</span><span class="keyword">public</span> Shape</span><br><span class="line">&#123;<span class="keyword">public</span>:</span><br><span class="line">Rectangle(<span class="keyword">float</span> i,<span class="keyword">float</span> j):L(i),W(j)&#123;&#125; <span class="comment">//此语句为赋值示例</span></span><br><span class="line">~Rectangle()&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">GetPerim</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="number">2</span>*(L+W);&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"><span class="keyword">float</span> L,W;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>35.字符串相关函数</p>
+<table>
+<thead>
+<tr>
+<th>字符串复制</th>
+<th>函数原型：char *strncpy(char *dest,char *src,int size_t);</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>字符串比较</td>
+<td>int strncmp ( const char * str1, const char * str2, size_t n );</td>
+</tr>
+<tr>
+<td>字符串附加拼接</td>
+<td><strong>char * strncat(char *dest, const char *src, size_t n);</strong></td>
+</tr>
+<tr>
+<td>查找</td>
+<td>char *strchr(const char *s,char c)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>36.如果派生类没有<strong>重新定义纯虚函数</strong>，而派生类只是继承基类的纯虚函数，则这个派生类仍然还是一个抽象类。如果派生类中给出了基类纯虚函数的实现，则该派生类就不再是抽象类了，它是一个可以建立对象的具体类了</p>
+<p>37.继承方式决定的是，基类的公有成员和保护成员的在本类中的性质，公有继承则保持他们原来的性质，私有继承即把他们变成自己的私有类，保护继承即把他们变成自己的保护类。</p>
+<p>38.类的成员函数后面加 const，表明这个函数不可以对这个类对象的数据成员（准确地说是非static数据成员）作任何改变例：</p>
+<p>39.枚举类型的使用 类似于#define </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Hero</span>&#123;</span>theshy=<span class="number">11</span>,rookie=<span class="number">34</span>,somf=<span class="number">88</span>&#125;;<span class="comment">//可以给部分枚举子赋值，也可以不赋值</span></span><br><span class="line"><span class="comment">//若全部不赋值，默认从0开始</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">color</span>&#123;</span>green,red,yellow=<span class="number">110</span>,blue&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span>  <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">enum</span> <span class="title">Hero</span> <span class="title">e</span> =</span> theshy;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; e &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    e=rookie;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;e&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">color</span> <span class="title">c</span>=</span>blue;<span class="comment">//green=0,red=1</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;blue&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出结果：</span></span><br><span class="line"><span class="comment">//11</span></span><br><span class="line"><span class="comment">//34</span></span><br><span class="line"><span class="comment">//111</span></span><br></pre></td></tr></table></figure>
+<p>40.共用体和结构体：存储方面</p>
+<p><img src="http://www.elecfans.com/uploads/allimg/171119/2755813-1G1191KQ3538.gif" alt="共用体和结构体的区别"></p>
+<p>42.友元的作用在于提高程序的运行效率,但是,它破坏了类的封装性和隐藏性,使得非成员函数可以访问类的私有成员。不过,类的访问权限确实在某些应用场合显得有些呆板,从而容忍了友元这一特别语法现象。</p>
+<p>​    <strong>友元函数没有this指针</strong>。</p>
+<p>43.类的非静态成员函数都有this指针，因为<strong>静态成员函**</strong>数<strong>属于整个类，所以</strong>没有this指针**。</p>
+<p>44.生成有n个元素的动态数组 int *a=new int [n];n的值之后还可以改</p>
+<h4 id="45-输入输出"><a href="#45-输入输出" class="headerlink" title="45.输入输出"></a>45.输入输出</h4><table>
+<thead>
+<tr>
+<th>ios::app</th>
+<th>定位到文件尾部进行输入</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ios::ate</td>
+<td>定位到文件尾部，但不能直接在尾部进行输入</td>
+</tr>
+</tbody></table>
+<p><img src="C:\Users\asus\AppData\Roaming\Typora\typora-user-images\image-20201202225938657.png" alt="image-20201202225938657"></p>
+<h4 id="46-控制符"><a href="#46-控制符" class="headerlink" title="46.控制符"></a>46.控制符</h4><table>
+<thead>
+<tr>
+<th><strong>setfill(c)</strong></th>
+<th>填充字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>setprecision(n)</strong></td>
+<td><strong>设置精度，n为小数点后几位数字（十进制）</strong></td>
+</tr>
+<tr>
+<td><strong>setw(n)</strong></td>
+<td><strong>设置字段宽度</strong></td>
+</tr>
+<tr>
+<td><strong>setiosflags(ios::fixed)</strong></td>
+<td><strong>固定小数数位</strong></td>
+</tr>
+<tr>
+<td><strong>setiosflags(ios::scientific)</strong></td>
+<td><strong>同上，并使用科学计数法</strong></td>
+</tr>
+<tr>
+<td><strong>setiosflags(ios::right)</strong></td>
+<td><strong>右对齐</strong></td>
+</tr>
+<tr>
+<td><strong>setiosflags(ios::left)</strong></td>
+<td><strong>左对齐</strong></td>
+</tr>
+</tbody></table>
+<p><strong>setw(int n)是c++中在输出操作中使用的字段宽度设置，设置输出的域宽，n表示字段宽度。只对紧接着的输出有效，紧接着的输出结束后又变回默认的域宽。</strong><br><strong>当后面紧跟着的输出字段长度小于n的时候，在该字段前面用空格补齐；当输出字段长度大于n时，全部整体输出。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">29</span>, b = <span class="number">100</span>,c=<span class="number">500</span>; </span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;setw(<span class="number">3</span>)&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">输出：</span></span><br><span class="line"><span class="comment"> 29          前面有个空格</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//--------</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">29</span>, b = <span class="number">100</span>,c=<span class="number">500</span>; </span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;setw(<span class="number">2</span>)&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">输出：</span></span><br><span class="line"><span class="comment">29          前面没有空格</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//------</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">29</span>, b = <span class="number">100</span>,c=<span class="number">500</span>; </span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;setw(<span class="number">3</span>)&lt;&lt;a&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">输出：</span></span><br><span class="line"><span class="comment"> 29100          前面有个空格</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h4 id="67-优先级"><a href="#67-优先级" class="headerlink" title="67.优先级"></a><strong>67.优先级</strong></h4><p><strong>决定表达式计算顺序时，先看运算符优先级，优先级高的先计算。</strong><br><strong>优先级相同时才考虑结合性。</strong><br><strong>优先级相同的运算符的结合性必须一致。</strong></p>
+<p><strong>【右结合举例】</strong><br><strong>=号为例：</strong><br><strong>a=b=c</strong><br><strong>先计算等号右侧的，等价于：</strong><br><strong>a=（b=c）</strong></p>
+<p><strong>68.</strong></p>
+<p><strong>优先级:  单目 &gt; 算术 &gt; 关系 &gt; 逻辑 &gt; 条件 &gt; 赋值 &gt; 逗号</strong></p>
+<p><strong>混合运算：</strong></p>
+<p><strong>运算时：char,short必转换为int，float必转换为double</strong></p>
+<p>​                <strong>两个不同类型的数运算时，低的类型向高的类型转换</strong></p>
+<p>​                <strong>系统自动进行的类型转换，称为隐式类型转换</strong></p>
+<p><strong><img src="C:\Users\asus\AppData\Roaming\Typora\typora-user-images\image-20201216202626212.png" alt="image-20201216202626212"></strong></p>
+<p><strong><img src="C:\Users\asus\AppData\Roaming\Typora\typora-user-images\image-20201209154040046.png" alt="image-20201209154040046"></strong></p>
+<p><strong>68.逗号表达式：求解过程: 求解表达式1，再求解表达式2。整个逗号表达式的值为表达式2的值。</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">3</span>;</span><br><span class="line">a=<span class="number">3</span>*<span class="number">5</span>，a*<span class="number">4</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a;</span><br><span class="line"><span class="comment">//输出：</span></span><br><span class="line"><span class="comment">//    12</span></span><br></pre></td></tr></table></figure>
+<p><strong>69.</strong></p>
+<p><strong><img src="C:\Users\asus\AppData\Roaming\Typora\typora-user-images\image-20201209164257640.png" alt="image-20201209164257640"></strong></p>
+<p><strong>70.值传递和引用传递:</strong></p>
+<p>​    <strong>值传递是指当发生函数调用时，给形参分配内存空间，并用实参来初始化形参（直接将实参的值传递给形参）。这一过程是参数值的单向传递，一旦形参获得了值便于实参脱离关系，此后无论形参发生了怎样的改变，都不会影响到实参</strong></p>
+<p>​    <strong>引用传递将引用作为形参，在执行主调函数中的调用语句时，系统自动用实参来初始化形参。这样形参就成为实参的一个别名，对形参的任何操作也就直接作用于实参。（是否说明引用传递是双向的？）</strong></p>
+<p><strong>71.类的静态数据成员可以通过类和类的对象以及公有派生的派生类和派生类的对象访问。</strong></p>
+<p>72.switch</p>
+<p><img src="C:\Users\asus\AppData\Roaming\Typora\typora-user-images\image-20201216205135995.png" alt="image-20201216205135995"></p>
+<p>73.存储期</p>
+<table>
+<thead>
+<tr>
+<th>动态存储</th>
+<th>静态存储</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自动变量</td>
+<td>静态局部变量</td>
+</tr>
+<tr>
+<td>寄存器变量</td>
+<td>静态外部变量</td>
+</tr>
+<tr>
+<td>形式参数</td>
+<td>外部变量</td>
+</tr>
+</tbody></table>
+<p>74.作用域</p>
+<table>
+<thead>
+<tr>
+<th>局部变量</th>
+<th>全局变量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自动变量</td>
+<td>静态外部变量</td>
+</tr>
+<tr>
+<td>静态局部变量</td>
+<td>外部变量</td>
+</tr>
+<tr>
+<td>寄存器变量</td>
+<td></td>
+</tr>
+<tr>
+<td>形式变量</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>75.外部函数可被其他文件调用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>76.</p>
+<p>二维数组的初始化：<br>a.按行给二维数组全部元素赋初值<br>b.写在一个花括号内,按顺序给全部元素赋初值<br>c.可以对部分元素赋初值，其余自动置0<br>d.如果对全部元素赋初值,一维长度可以不指定,二维长度不能省</p>
+<p><strong>实参数组和形参数组共用一段内存单元，形参数组元素改变,实参数组元素也会跟着改变</strong></p>
+<p>77.c++全局变量未初始化的话会被定义为各自类型的 <strong>0</strong> 值，如int型会是0，char型会是‘\0’</p>
+<p>78.c++数学函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//三角函数</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">sin</span> <span class="params">(<span class="keyword">double</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">cos</span> <span class="params">(<span class="keyword">double</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">tan</span> <span class="params">(<span class="keyword">double</span>)</span></span>;</span><br><span class="line"><span class="comment">//反三角函数</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">asin</span> <span class="params">(<span class="keyword">double</span>)</span></span>; <span class="comment">//结果介于[-PI/2, PI/2]</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">acos</span> <span class="params">(<span class="keyword">double</span>)</span></span>; <span class="comment">//结果介于[0, PI]</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">atan</span> <span class="params">(<span class="keyword">double</span>)</span></span>; <span class="comment">//反正切(主值), 结果介于[-PI/2, PI/2]</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">atan2</span> <span class="params">(<span class="keyword">double</span>, <span class="keyword">double</span>)</span></span>; <span class="comment">//反正切(整圆值), 结果介于[-PI/2, PI/2]</span></span><br><span class="line"><span class="comment">//双曲三角函数</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">sinh</span> <span class="params">(<span class="keyword">double</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">cosh</span> <span class="params">(<span class="keyword">double</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">tanh</span> <span class="params">(<span class="keyword">double</span>)</span></span>;</span><br><span class="line"><span class="comment">//指数与对数</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">exp</span> <span class="params">(<span class="keyword">double</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">pow</span> <span class="params">(<span class="keyword">double</span>, <span class="keyword">double</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">sqrt</span> <span class="params">(<span class="keyword">double</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">log</span> <span class="params">(<span class="keyword">double</span>)</span></span>; 以e为底的对数</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">log10</span> <span class="params">(<span class="keyword">double</span>)</span></span>;c++中自然对数函数：<span class="built_in">log</span>(N)  </span><br><span class="line"><span class="comment">//以10为底：log10(N)但没有以2为底的函数但是可以用换底公式解决：log2(N)=log10(N)/log10(2)</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//取整</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">ceil</span> <span class="params">(<span class="keyword">double</span>)</span></span>;  <span class="comment">//取上整</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">floor</span> <span class="params">(<span class="keyword">double</span>)</span></span>; <span class="comment">//取下整</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//绝对值</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">fabs</span> <span class="params">(<span class="keyword">double</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 标准化浮点数</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">frexp</span> <span class="params">(<span class="keyword">double</span> f, <span class="keyword">int</span> *p)</span></span>; <span class="comment">//标准化浮点数, f = x * 2^p, 已知f求x, p ( x介于[0.5, 1] )</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">ldexp</span> <span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> p)</span></span>;  <span class="comment">//与frexp相反, 已知x, p求f</span></span><br><span class="line"><span class="comment">//取整与取余</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">modf</span> <span class="params">(<span class="keyword">double</span>, <span class="keyword">double</span>*)</span></span>; <span class="comment">//将参数的整数部分通过指针回传, 返回小数部分</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">fmod</span> <span class="params">(<span class="keyword">double</span>, <span class="keyword">double</span>)</span></span>;  <span class="comment">//返回两参数相除的余数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//平方根</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">sqrt</span><span class="params">(<span class="keyword">double</span> x)</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>79.auto的使用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> it = nums.begin();it!=nums.end();++it)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/04/c++/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-杂项要点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -178,6 +824,132 @@
 <p>其中<strong>nullptr</strong>是c++中新的定义新指针的方式。因为c++中的NULL 是0 ，所以在使用函数重载时可能产生歧义，所以引入nullptr，与NULL区分开来，nullptr关键字用于标识空指针，是std::nullptr_t类型的（constexpr）变量。它可以转换成任何指针类型和bool布尔类型（主要是为了兼容普通指针可以作为条件判断语句的写法），但是不能被转换为整数。</p>
 <p>2.迭代法</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *p=head;</span><br><span class="line">        ListNode *l=<span class="literal">NULL</span>;</span><br><span class="line">        ListNode *temp=<span class="literal">NULL</span>;</span><br><span class="line">        ListNode *pre=<span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span>(p)&#123;</span><br><span class="line">            pre=p-&gt;next;</span><br><span class="line">            p-&gt;next=l;</span><br><span class="line">            l=p;</span><br><span class="line">            p=pre;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="malloc-free和new-delete的联系"><a href="#malloc-free和new-delete的联系" class="headerlink" title="malloc/free和new/delete的联系"></a>malloc/free和new/delete的联系</h3><p>​    存储方式相同，两者动态申请的内存都处于堆中，不会被操作系统自动收回，只有在关闭程序之后才会释放，所以一直运行程序并且不delete掉new出来的指针，会导致内存中有块空间被永远占用，而在指向此块空间的指针不存在时，这块内存也将不可到达，从而造成<strong>内存泄漏</strong></p>
+<p>ps：new和delete必须配套使用，虽然vscode并不报错</p>
+<h3 id="malloc-free和new-delete的区别"><a href="#malloc-free和new-delete的区别" class="headerlink" title="malloc/free和new/delete的区别"></a>malloc/free和new/delete的区别</h3><p>​    1.malloc和free返回void类型指针，new和delete直接带具体类型的指针。</p>
+<p>​    2.malloc和free属于C语言中的函数，需要库的支持，new/delete是C++中的运算符，运行效率更高。 </p>
+<p>​    3.用new动态申请类对象的内存空间时，类对象的构建要调用构造函数，相当于对内存空间进行了初始化。malloc动态申请的类对象的内存空间时，不会初始化，也就是说申请的内存空间无法使用，因为类的初始化是由构造函数完成的。</p>
+<h3 id="c-枚举的缺省值是0"><a href="#c-枚举的缺省值是0" class="headerlink" title="c++枚举的缺省值是0"></a>c++枚举的缺省值是0</h3><h2 id="unordered-map和map"><a href="#unordered-map和map" class="headerlink" title="unordered_map和map"></a>unordered_map和map</h2><table>
+<thead>
+<tr>
+<th><strong>成员方法</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>begin()</strong></td>
+<td>返回指向容器中第一个键值对的正向迭代器。</td>
+</tr>
+<tr>
+<td><strong>end()</strong></td>
+<td>返回指向容器中最后一个键值对之后位置的正向迭代器。</td>
+</tr>
+<tr>
+<td>cbegin()</td>
+<td>和 begin() 功能相同，只不过在其基础上增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
+</tr>
+<tr>
+<td>cend()</td>
+<td>和 end() 功能相同，只不过在其基础上，增加了 const 属性，即该方法返回的迭代器不能用于修改容器内存储的键值对。</td>
+</tr>
+<tr>
+<td>empty()</td>
+<td>若容器为空，则返回 true；否则 false。</td>
+</tr>
+<tr>
+<td>size()</td>
+<td>返回当前容器中存有键值对的个数。</td>
+</tr>
+<tr>
+<td>max_size()</td>
+<td>返回容器所能容纳键值对的最大个数，不同的操作系统，其返回值亦不相同。</td>
+</tr>
+<tr>
+<td>operator[key]</td>
+<td>该模板类中重载了 [] 运算符，其功能是可以向访问数组中元素那样，只要给定某个键值对的键 key，就可以获取该键对应的值。注意，如果当前容器中没有以 key 为键的键值对，则其会使用该键向当前容器中插入一个新键值对。</td>
+</tr>
+<tr>
+<td>at(key)</td>
+<td>返回容器中存储的键 key 对应的值，如果 key 不存在，则会抛出 out_of_range 异常。</td>
+</tr>
+<tr>
+<td><strong>find(key)</strong></td>
+<td>查找以 key 为键的键值对，如果找到，则返回一个指向该键值对的正向迭代器；反之，则返回一个指向容器中最后一个键值对之后位置的迭代器（如果 end() 方法返回的迭代器）。</td>
+</tr>
+<tr>
+<td>count(key)</td>
+<td>在容器中查找以 key 键的键值对的个数。</td>
+</tr>
+<tr>
+<td>equal_range(key)</td>
+<td>返回一个 pair 对象，其包含 2 个迭代器，用于表明当前容器中键为 key 的键值对所在的范围。</td>
+</tr>
+<tr>
+<td>emplace()</td>
+<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
+</tr>
+<tr>
+<td>emplace_hint()</td>
+<td>向容器中添加新键值对，效率比 insert() 方法高。</td>
+</tr>
+<tr>
+<td><strong>insert()</strong></td>
+<td>向容器中添加新键值对。</td>
+</tr>
+<tr>
+<td><strong>erase()</strong></td>
+<td>删除指定键值对。</td>
+</tr>
+<tr>
+<td>clear()</td>
+<td>清空容器，即删除容器中存储的所有键值对。</td>
+</tr>
+<tr>
+<td>swap()</td>
+<td>交换 2 个 unordered_map 容器存储的键值对，前提是必须保证这 2 个容器的类型完全相等。</td>
+</tr>
+<tr>
+<td>bucket_count()</td>
+<td>返回当前容器底层存储键值对时，使用桶（一个线性链表代表一个桶）的数量。</td>
+</tr>
+<tr>
+<td>max_bucket_count()</td>
+<td>返回当前系统中，unordered_map 容器底层最多可以使用多少桶。</td>
+</tr>
+<tr>
+<td>bucket_size(n)</td>
+<td>返回第 n 个桶中存储键值对的数量。</td>
+</tr>
+<tr>
+<td>bucket(key)</td>
+<td>返回以 key 为键的键值对所在桶的编号。</td>
+</tr>
+<tr>
+<td>load_factor()</td>
+<td>返回 unordered_map 容器中当前的负载因子。负载因子，指的是的当前容器中存储键值对的数量（size()）和使用桶数（bucket_count()）的比值，即 load_factor() = size() / bucket_count()。</td>
+</tr>
+<tr>
+<td>max_load_factor()</td>
+<td>返回或者设置当前 unordered_map 容器的负载因子。</td>
+</tr>
+<tr>
+<td>rehash(n)</td>
+<td>将当前容器底层使用桶的数量设置为 n。</td>
+</tr>
+<tr>
+<td>reserve()</td>
+<td>将存储桶的数量（也就是 bucket_count() 方法的返回值）设置为至少容纳count个元（不超过最大负载因子）所需的数量，并重新整理容器。</td>
+</tr>
+<tr>
+<td>hash_function()</td>
+<td>返回当前容器使用的哈希函数对象。</td>
+</tr>
+</tbody></table>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><h5 id="map"><a href="#map" class="headerlink" title="map"></a>map</h5><p>优点：<br>有序性，这是map结构最大的优点，其元素的有序性在很多应用中都会简化很多的操作<br>红黑树，内部实现一个红黑书使得map的很多操作在的时间复杂度下就可以实现，因此效率非常的高<br>缺点：<br>空间占用率高，因为map内部实现了红黑树，虽然提高了运行效率，但是因为每一个节点都需要额外保存父节点，孩子节点以及红/黑性质，使得每一个节点都占用大量的空间<br>适用处，对于那些有顺序要求的问题，用map会更高效一些</p>
+<h5 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h5><p>优点：<br>因为内部实现了哈希表，因此其查找速度非常的快<br>缺点：<br>哈希表的建立比较耗费时间<br>适用处，对于查找问题，unordered_map会更加高效一些，因此遇到查找问题，常会考虑一下用unordered_map</p>
+<h4 id="迭代器使用方法"><a href="#迭代器使用方法" class="headerlink" title="迭代器使用方法"></a>迭代器使用方法</h4><p>for (auto iter = umap.begin(); iter != umap.end(); ++iter)</p>
 
       
 
@@ -351,12 +1123,93 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><p><strong>大顶堆</strong>：每个节点的值都大于其子节点的值</p>
+        <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h3 id="稳定性："><a href="#稳定性：" class="headerlink" title="稳定性："></a>稳定性：</h3><p><strong>稳定</strong>：如果a原本在b前面，而a=b，排序之后a仍然在b的前面。</p>
+<p><strong>不稳定</strong>：如果a原本在b的前面，而a=b，排序之后 a 可能会出现在 b 的后面。</p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。</p>
+<p>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。</p>
+<p>重复第二步，直到所有元素均排序完毕。</p>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><p><strong>大顶堆</strong>：每个节点的值都大于其子节点的值</p>
 <p><strong>小顶堆</strong>：每个节点的值都小于其节点的值</p>
 <p><strong>时间复杂度：nlogn</strong></p>
 <p><strong>步骤：</strong>1.先把数据构造成一个大顶堆，取出堆顶元素</p>
 <p>​            2.将剩下的元素继续构成一个大顶堆，并取出堆顶元素</p>
 <p>​            3.重复以上操作，知道取完所有数据</p>
+<table>
+<thead>
+<tr>
+<th>比较类排序</th>
+<th>稳定性</th>
+<th>时间复杂</th>
+<th>空间复杂</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>冒泡排序</td>
+<td>稳定</td>
+<td>n^2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>选择排序</td>
+<td>不稳定</td>
+<td>n^2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>插入排序</td>
+<td>稳定</td>
+<td>n^2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>不稳定</td>
+<td>n<del>nlogn</del>n^2</td>
+<td>nlogn</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>稳定</td>
+<td>nlogn</td>
+<td>n</td>
+</tr>
+<tr>
+<td>希尔排序</td>
+<td>不稳定</td>
+<td>n^1.3~n^2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td>稳定</td>
+<td>nlogn</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>非比较类排序</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>基数排序</td>
+<td>稳定</td>
+<td>n*k</td>
+<td>n+k</td>
+</tr>
+<tr>
+<td>桶排序</td>
+<td>稳定</td>
+<td>n+k<del>n</del>n^2</td>
+<td>n+k</td>
+</tr>
+<tr>
+<td>计数排序</td>
+<td>稳定</td>
+<td>n+k</td>
+<td>n+k</td>
+</tr>
+</tbody></table>
 
       
 
@@ -370,77 +1223,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/01/20/%E6%8E%92%E5%BA%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/20/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/20/hello-world/" class="archive-article-date">
-  	<time datetime="2021-01-20T09:07:04.994Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/20/hello-world/">展开全文 >></a>
         </p>
       
 
