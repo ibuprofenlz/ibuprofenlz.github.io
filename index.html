@@ -152,31 +152,32 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-我的第一篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-杂项要点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/20/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87/">我的第一篇</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/20/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87/" class="archive-article-date">
-  	<time datetime="2021-01-20T09:11:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##第一篇</p>
-<p>内容</p>
-<hr>
-<p>##参考文献</p>
-<p><a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></p>
+        <h3 id="关于为什么c-中创建节点要加-号而其他语言不要"><a href="#关于为什么c-中创建节点要加-号而其他语言不要" class="headerlink" title="关于为什么c++中创建节点要加*号而其他语言不要"></a>关于为什么c++中创建节点要加*号而其他语言不要</h3><p>在 Java 中，只有当你使用 new 操作符时，才会真正在内存中申请一块空间，创建一个新对象，并将该对象绑定到你所定义的变量名上。其它情况下，要么是将已有对象绑定到某个变量名上，要么就是定义的变量名是个空引用，没有绑定任何对象。</p>
+<p>也就是说，定义变量名只是创建了一个新的标识符，跟创建对象没有关系，创建对象必须通过 new 来完成，只有创建对象时才会申请内存空间。</p>
+<p><strong>但在 C++ 中，当你定义了一个变量 s 时，即使你没有给它赋值，也意味着你不但创建了一个新的标识符，同时还在栈中申请了对应的内存空间。</strong></p>
+<p>因此，C++ 中定义的变量名不仅仅是个标识符，还自动关联着栈中的一块内存空间。</p>
+<p>而 <strong>C++ 中的 new 操作符表示的是在堆中申请内存</strong>，因为栈中的内存在运行时期大小是固定且有限的，因此需要动态内存分配的时候就需要用 new 来实现。<strong>这类似于 C 里面的 malloc 函数</strong>，只不过 new 操作符还封装了其它的操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//java</span></span><br><span class="line">Student s; <span class="comment">//定义标识符s，没有实际空间</span></span><br><span class="line"></span><br><span class="line">Student s = <span class="keyword">new</span> Student(); <span class="comment">//定义s，并绑定到新创建的对象</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c++</span></span><br><span class="line">Student s; <span class="comment">//定义标识符s，并在栈中申请空间</span></span><br><span class="line"></span><br><span class="line">Student* s = <span class="keyword">new</span> Student(); <span class="comment">//定义s，并在堆中申请空间，过后需手动释放内存</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="c-中的string"><a href="#c-中的string" class="headerlink" title="c++中的string"></a>c++中的string</h3><p>c++中的string可以用”+=“自由地在字符串后添加新的字符</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> s;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;请输入数组长度：&quot;</span>;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ;i&lt;n;i++ )&#123;</span><br><span class="line">   	s+=<span class="string">&quot;#997&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;现在输出数组&quot;</span>;</span><br><span class="line"><span class="keyword">while</span>(s[i]!=<span class="string">&#x27;\0&#x27;</span>)&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;s[i];</span><br><span class="line">	i++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输入结果：3</span></span><br><span class="line"><span class="comment">//输出结果：#997#997#997</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="倒序输出链表中元素"><a href="#倒序输出链表中元素" class="headerlink" title="倒序输出链表中元素"></a>倒序输出链表中元素</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">recur</span><span class="params">(ListNode* head)</span> </span>&#123; <span class="comment">//利用递归操作反序遍历链表</span></span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">        recur(head-&gt;next);</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    	<span class="built_in">cout</span>&lt;&lt;head-&gt;val;  <span class="comment">//此语句可写做别的操作</span></span><br><span class="line">        <span class="comment">//    </span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="逆转链表的两种方法"><a href="#逆转链表的两种方法" class="headerlink" title="逆转链表的两种方法"></a>逆转链表的两种方法</h3><p>1.递归法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> recur(head, <span class="literal">nullptr</span>);           <span class="comment">// 调用递归并返回</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ListNode* <span class="title">recur</span><span class="params">(ListNode* cur, ListNode* pre)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (cur == <span class="literal">nullptr</span>) <span class="keyword">return</span> pre;        <span class="comment">// 终止条件</span></span><br><span class="line">        ListNode* res = recur(cur-&gt;next, cur); <span class="comment">// 递归后继节点</span></span><br><span class="line">        cur-&gt;next = pre;                       <span class="comment">// 修改节点引用指向</span></span><br><span class="line">        <span class="keyword">return</span> res;                            <span class="comment">// 返回反转链表的头节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<p>其中<strong>nullptr</strong>是c++中新的定义新指针的方式。因为c++中的NULL 是0 ，所以在使用函数重载时可能产生歧义，所以引入nullptr，与NULL区分开来，nullptr关键字用于标识空指针，是std::nullptr_t类型的（constexpr）变量。它可以转换成任何指针类型和bool布尔类型（主要是为了兼容普通指针可以作为条件判断语句的写法），但是不能被转换为整数。</p>
+<p>2.迭代法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *p=head;</span><br><span class="line">        ListNode *l=<span class="literal">NULL</span>;</span><br><span class="line">        ListNode *temp=<span class="literal">NULL</span>;</span><br><span class="line">        ListNode *pre=<span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">while</span>(p)&#123;</span><br><span class="line">            pre=p-&gt;next;</span><br><span class="line">            p-&gt;next=l;</span><br><span class="line">            l=p;</span><br><span class="line">            p=pre;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -189,7 +190,186 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/20/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/01/20/%E6%9D%82%E9%A1%B9%E8%A6%81%E7%82%B9/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-算法相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="时间复杂度杂度和空间复杂度"><a href="#时间复杂度杂度和空间复杂度" class="headerlink" title="时间复杂度杂度和空间复杂度"></a>时间复杂度杂度和空间复杂度</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>时间复杂度并不等于<strong>运行时间</strong>，运行时间有一定的随机性，而时间复杂度需要多次运行，取算法运行时间的一个稳定水平。</p>
+<h4 id="相关基本概念"><a href="#相关基本概念" class="headerlink" title="相关基本概念"></a>相关基本概念</h4><ol>
+<li><strong>渐进</strong> 时间复杂度 ：观察时间复杂度应该看输入数据不断增大时程序的表现，而不是一两个测试用例的运行速度。如：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面算法的操作次数与n的大小无关</span></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> sum = (<span class="number">1</span> + n) * n / <span class="number">2</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;sum;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下面算法会与n呈现线性关系，n越大执行的操作数也越多</span></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    sum += i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;sum;</span><br></pre></td></tr></table></figure>
+
+
+<p>​    2.大O表示<strong>事前估计法</strong>，通过对代码的解析来对程序的时间复杂度进行规划，其<strong>意义</strong>是：</p>
+<p>​    a.便于不同的算法进行比较，把性能表现差不多的算法归为一类；<br>​    b.在程序员编码的过程中可以进行自我检查和优化。有些时候，为了先实现这个功能，我们会先写一个粗略的版本，好让这个程序能够正确的运行，但是这个粗略的版本很可能是效率不高的。进行复杂度的估算，对之后将程序往高效率方向改进至关重要。</p>
+<h4 id="ps："><a href="#ps：" class="headerlink" title="ps："></a>ps：</h4><p>​        在程序规模较小时，仔细划分实践复杂度的意义不大</p>
+<p>​        时间复杂度只需要给出一个近似的结论</p>
+<p>​        绝大多数情况，时间复杂度都关注最坏情况，这跟木桶原理是一样的，我们需要能接受算法最坏的表现才能采用。</p>
+<p>​        一般情况下，时间的高效比节约空间更加重要，例如很多情况下空间复杂度最好的解法就是暴力法。</p>
+<h4 id="常见的时间复杂度计算规则"><a href="#常见的时间复杂度计算规则" class="headerlink" title="常见的时间复杂度计算规则"></a>常见的时间复杂度计算规则</h4><ol>
+<li><h5 id="常数加法系数看做-0"><a href="#常数加法系数看做-0" class="headerlink" title="常数加法系数看做 0"></a>常数加法系数看做 0</h5><p>一段程序必须要做的操作（常数次操作）不纳入复杂度的计算。一般而言，常数次操作都不会是造成程序性能瓶颈的原因。</p>
+</li>
+<li><h5 id="对于一个多项式，只保留最高次幂的项，并且乘法系数化简成-1"><a href="#对于一个多项式，只保留最高次幂的项，并且乘法系数化简成-1" class="headerlink" title="对于一个多项式，只保留最高次幂的项，并且乘法系数化简成 1"></a>对于一个多项式，只保留最高次幂的项，并且乘法系数化简成 1</h5><p>常见结论：</p>
+<p>一次遍历，里面不再有循环的操作，时间复杂度是 O(N)。也就是说遍历一遍所有元素就能够得到结果。这样的算法称为具有线性复杂度的算法。</p>
+<p>多重循环，内外层程序都会收到输入规模n的影响，如冒泡排序，时间复杂度是O(N^x)，有几重循环x就是几</p>
+</li>
+</ol>
+<ol start="3">
+<li><h5 id="对数或者是含有对数乘法因子的项，对数底都看作-2"><a href="#对数或者是含有对数乘法因子的项，对数底都看作-2" class="headerlink" title="对数或者是含有对数乘法因子的项，对数底都看作 2"></a>对数或者是含有对数乘法因子的项，对数底都看作 2</h5><p>这个结论是由换底公式推论而来，<br>$$<br>log_ab=log_cb/log_ca<br>$$<br>例如：<br>$$<br>log_aN=log_2N/log_2a<br>$$<br>而由<strong>2</strong>得系数loga视为常数1，则可以统一把log的底数记为2</p>
+</li>
+</ol>
+<h2 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">HalfSeek</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> n,<span class="keyword">int</span> k)</span></span>&#123;   <span class="comment">//n为数组长度,k为查找目标</span></span><br><span class="line">    <span class="keyword">int</span> ltag=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> rtag=n; </span><br><span class="line">    <span class="keyword">while</span>(ltag&lt;=rtag)&#123;</span><br><span class="line">       <span class="keyword">int</span> mtag=(ltag+rtag)/<span class="number">2</span>;       </span><br><span class="line">        <span class="keyword">if</span>(a[mtag]&gt;k)&#123;</span><br><span class="line">            rtag=mtag<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a[mtag]&lt;k)&#123;</span><br><span class="line">            ltag=mtag+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> mtag;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>算法的时间复杂度为O(logN)</p>
+<p>折半查找的过程可以画成一颗二叉树，如序列[2,3,10,15,20,25,28,29,30,35,40];</p>
+<p><img src="C:\Users\LZ\AppData\Roaming\Typora\typora-user-images\1610966564093.png" alt="1610966564093"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/20/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数据结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><h3 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h3><p>前一部分为有序区，后一部分为无序区，每次排序操作从后部的无序区拉一个元素插入到前部分的有序区中，插入过程具体为：</p>
+<p>1.创建一个临时变量t，给t赋值为即将进行插入操作的数x</p>
+<p>2.从x开始向前遍历</p>
+<h3 id="折半插入排序"><a href="#折半插入排序" class="headerlink" title="折半插入排序"></a>折半插入排序</h3><h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><h2 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h2><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><h3 id="插入排序-1"><a href="#插入排序-1" class="headerlink" title="插入排序"></a>插入排序</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><h3 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h3><p><strong>大顶堆</strong>：每个节点的值都大于其子节点的值</p>
+<p><strong>小顶堆</strong>：每个节点的值都小于其节点的值</p>
+<p><strong>时间复杂度：nlogn</strong></p>
+<p><strong>步骤：</strong>1.先把数据构造成一个大顶堆，取出堆顶元素</p>
+<p>​            2.将剩下的元素继续构成一个大顶堆，并取出堆顶元素</p>
+<p>​            3.重复以上操作，知道取完所有数据</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/20/%E6%8E%92%E5%BA%8F/">展开全文 >></a>
         </p>
       
 

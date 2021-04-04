@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="时间复杂度杂度和空间复杂度时间复杂度时间复杂度并不等于运行时间，运行时间有一定的随机性，而时间复杂度需要多次运行，取算法运行时间的一个稳定水平。 相关基本概念 渐进 时间复杂度 ：观察时间复杂度应该看输入数据不断增大时程序的表现，而不是一两个测试用例的运行速度。如：  123456789101112&#x2F;&#x2F;下面算法的操作次数与n的大小无关int n &#x3D; 100;int sum &#x3D; (1 + n) *">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2021/index.html">
+<meta property="og:url" content="http://example.com/2021/01/20/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="时间复杂度杂度和空间复杂度时间复杂度时间复杂度并不等于运行时间，运行时间有一定的随机性，而时间复杂度需要多次运行，取算法运行时间的一个稳定水平。 相关基本概念 渐进 时间复杂度 ：观察时间复杂度应该看输入数据不断增大时程序的表现，而不是一两个测试用例的运行速度。如：  123456789101112&#x2F;&#x2F;下面算法的操作次数与n的大小无关int n &#x3D; 100;int sum &#x3D; (1 + n) *">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/LZ/AppData/Roaming/Typora/typora-user-images/1610966564093.png">
+<meta property="article:published_time" content="2021-01-20T11:46:12.967Z">
+<meta property="article:modified_time" content="2021-01-18T13:03:39.010Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/LZ/AppData/Roaming/Typora/typora-user-images/1610966564093.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,133 +156,178 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-算法相关" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="时间复杂度杂度和空间复杂度"><a href="#时间复杂度杂度和空间复杂度" class="headerlink" title="时间复杂度杂度和空间复杂度"></a>时间复杂度杂度和空间复杂度</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>时间复杂度并不等于<strong>运行时间</strong>，运行时间有一定的随机性，而时间复杂度需要多次运行，取算法运行时间的一个稳定水平。</p>
+<h4 id="相关基本概念"><a href="#相关基本概念" class="headerlink" title="相关基本概念"></a>相关基本概念</h4><ol>
+<li><strong>渐进</strong> 时间复杂度 ：观察时间复杂度应该看输入数据不断增大时程序的表现，而不是一两个测试用例的运行速度。如：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下面算法的操作次数与n的大小无关</span></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> sum = (<span class="number">1</span> + n) * n / <span class="number">2</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;sum;</span><br><span class="line"></span><br><span class="line"><span class="comment">//下面算法会与n呈现线性关系，n越大执行的操作数也越多</span></span><br><span class="line"><span class="keyword">int</span> n = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    sum += i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;sum;</span><br></pre></td></tr></table></figure>
+
+
+<p>​    2.大O表示<strong>事前估计法</strong>，通过对代码的解析来对程序的时间复杂度进行规划，其<strong>意义</strong>是：</p>
+<p>​    a.便于不同的算法进行比较，把性能表现差不多的算法归为一类；<br>​    b.在程序员编码的过程中可以进行自我检查和优化。有些时候，为了先实现这个功能，我们会先写一个粗略的版本，好让这个程序能够正确的运行，但是这个粗略的版本很可能是效率不高的。进行复杂度的估算，对之后将程序往高效率方向改进至关重要。</p>
+<h4 id="ps："><a href="#ps：" class="headerlink" title="ps："></a>ps：</h4><p>​        在程序规模较小时，仔细划分实践复杂度的意义不大</p>
+<p>​        时间复杂度只需要给出一个近似的结论</p>
+<p>​        绝大多数情况，时间复杂度都关注最坏情况，这跟木桶原理是一样的，我们需要能接受算法最坏的表现才能采用。</p>
+<p>​        一般情况下，时间的高效比节约空间更加重要，例如很多情况下空间复杂度最好的解法就是暴力法。</p>
+<h4 id="常见的时间复杂度计算规则"><a href="#常见的时间复杂度计算规则" class="headerlink" title="常见的时间复杂度计算规则"></a>常见的时间复杂度计算规则</h4><ol>
+<li><h5 id="常数加法系数看做-0"><a href="#常数加法系数看做-0" class="headerlink" title="常数加法系数看做 0"></a>常数加法系数看做 0</h5><p>一段程序必须要做的操作（常数次操作）不纳入复杂度的计算。一般而言，常数次操作都不会是造成程序性能瓶颈的原因。</p>
+</li>
+<li><h5 id="对于一个多项式，只保留最高次幂的项，并且乘法系数化简成-1"><a href="#对于一个多项式，只保留最高次幂的项，并且乘法系数化简成-1" class="headerlink" title="对于一个多项式，只保留最高次幂的项，并且乘法系数化简成 1"></a>对于一个多项式，只保留最高次幂的项，并且乘法系数化简成 1</h5><p>常见结论：</p>
+<p>一次遍历，里面不再有循环的操作，时间复杂度是 O(N)。也就是说遍历一遍所有元素就能够得到结果。这样的算法称为具有线性复杂度的算法。</p>
+<p>多重循环，内外层程序都会收到输入规模n的影响，如冒泡排序，时间复杂度是O(N^x)，有几重循环x就是几</p>
+</li>
+</ol>
+<ol start="3">
+<li><h5 id="对数或者是含有对数乘法因子的项，对数底都看作-2"><a href="#对数或者是含有对数乘法因子的项，对数底都看作-2" class="headerlink" title="对数或者是含有对数乘法因子的项，对数底都看作 2"></a>对数或者是含有对数乘法因子的项，对数底都看作 2</h5><p>这个结论是由换底公式推论而来，<br>$$<br>log_ab=log_cb/log_ca<br>$$<br>例如：<br>$$<br>log_aN=log_2N/log_2a<br>$$<br>而由<strong>2</strong>得系数loga视为常数1，则可以统一把log的底数记为2</p>
+</li>
+</ol>
+<h2 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">HalfSeek</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> n,<span class="keyword">int</span> k)</span></span>&#123;   <span class="comment">//n为数组长度,k为查找目标</span></span><br><span class="line">    <span class="keyword">int</span> ltag=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> rtag=n; </span><br><span class="line">    <span class="keyword">while</span>(ltag&lt;=rtag)&#123;</span><br><span class="line">       <span class="keyword">int</span> mtag=(ltag+rtag)/<span class="number">2</span>;       </span><br><span class="line">        <span class="keyword">if</span>(a[mtag]&gt;k)&#123;</span><br><span class="line">            rtag=mtag<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a[mtag]&lt;k)&#123;</span><br><span class="line">            ltag=mtag+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> mtag;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>算法的时间复杂度为O(logN)</p>
+<p>折半查找的过程可以画成一颗二叉树，如序列[2,3,10,15,20,25,28,29,30,35,40];</p>
+<p><img src="C:\Users\LZ\AppData\Roaming\Typora\typora-user-images\1610966564093.png" alt="1610966564093"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/20/%E6%9D%82%E9%A1%B9%E8%A6%81%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2021-01-20T11:46:15.057Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/01/20/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/20/%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2021-01-20T11:46:12.967Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="archive-article-date">
-  	<time datetime="2021-01-20T11:46:09.101Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+    <a href="/2021/01/20/%E6%9D%82%E9%A1%B9%E8%A6%81%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/20/%E6%8E%92%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2021-01-20T11:44:15.414Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/20/hello-world/" class="archive-article-date">
-  	<time datetime="2021-01-20T09:07:04.994Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/20/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -299,8 +350,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
